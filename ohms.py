@@ -43,26 +43,27 @@ class Ohms:
         R = U / I
         return R
     
-    def led_resistor(self, 
+    def find_resistor(self, 
                     source: float,
-                    led_voltage: float,
-                    led_current: float = 0.02) -> float:
+                    component_voltage: float,
+                    component_current: float = 0.02 # initial velue for LED, change the velue in another componets
+                    ) -> float:
         
         """
-        Calculate the resistor value needed for a LED circuit using Ohm's Law.
+        Calculate the resistor value needed to limit the current flowing through a component using Ohm's Law.
 
-        This method calculates the resistor value needed to limit the current flowing through an LED
-        to a specified value, considering the source voltage and the forward voltage drop of the LED.
+        This method calculates the resistor value needed to limit the current flowing through a component
+        to a specified value, considering the source voltage and the forward voltage drop of the component.
 
         Parameters:
             source (float): The voltage of the power source in volts.
-            led_voltage (float): The forward voltage of the LED in volts.
-            led_current (float, optional): The desired current for the LED in amperes.
-                                            Defaults to 0.02 (20mA).
+            component_voltage (float): The forward voltage drop of the component in volts.
+            component_current (float): The desired current for the component in amperes.
 
         Returns:
-            float: The resistance value needed for the LED circuit in ohms.
+            float: The resistance value needed for the circuit in ohms.
         """
         
-        U = source - led_voltage
-        return U/led_current
+        
+        U = source - component_voltage
+        return U/component_current
