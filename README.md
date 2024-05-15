@@ -1,0 +1,2 @@
+# classOhms
+ohms calc
